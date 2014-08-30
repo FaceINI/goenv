@@ -2,15 +2,44 @@
 #
 # golang GOPATH switcher
 #
+# change gopath
 _OLD_GOPATH_=$GOPATH
-GOPATH=`pwd`
-export GOPATH
+_NEW_GOPATH_=`pwd`
+export GOPATH=$_NEW_GOPATH_
+
+#change path
+_OLD_PATH_=$PATH
+export PATH=$PATH:$GOPATH/bin
+
+#change ps1
 export _OLD_PS1_=$PS1
 export PS1="[\e[31;1mGO:$(basename $GOPATH)\e[0m] $PS1"
+
+#go to project 
+gogogo() {
+	cd $GOPATH
+}
+
+# goinit make src dir
+goinit() {
+	if [ ! -d src ]; then
+		mkdir src
+	fi
+	if [ ! -d bin ]; then
+	    mkdir bin
+	fi
+	if [ ! -d pkg ]; then
+	    mkdir pkg
+	fi
+}
+
 deactivate() {
-    export PS1=$_OLD_PS1_
-    export GOPATH=$_OLD_GOPATH_
-    unset GOPATH
-    unset _OLD_PS1_
-    unset deactivate
+	export PS1=$_OLD_PS1_
+	export GOPATH=$_OLD_GOPATH_
+    export PATH=$_OLD_PATH_
+	unset GOPATH
+	unset _OLD_PS1_
+	unset deactivate
+	unset goinit
+	unset gogogo
 }
