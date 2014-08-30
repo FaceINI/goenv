@@ -7,20 +7,20 @@ A tiny golang GOPATH switcher for Go programming.
 
 使用方法
 
-<pre>
+```bash
   cp goenv /usr/local/go/bin/goenv
   cd path/to/project/
   source goenv
   goinit
   tree
-</pre>
+```
 结果如下
-<pre>
+```base
   .
   ├── bin
   ├── pkg
   └── src
-</pre>
+```
 
   
   
