@@ -36,10 +36,11 @@ goinit() {
 deactivate() {
 	export PS1=$_OLD_PS1_
 	export GOPATH=$_OLD_GOPATH_
-    export PATH=$_OLD_PATH_
-	unset GOPATH
+        export PATH=$_OLD_PATH_
+	unset _OLD_GOPATH_
 	unset _OLD_PS1_
-	unset deactivate
+	unset _OLD_PATH_
 	unset goinit
 	unset gogogo
+	unset deactivate
 }
